@@ -9,7 +9,7 @@ import numpy as np
 from sklearn.model_selection import GroupKFold, LeaveOneGroupOut, cross_val_predict
 
 from src.datasets.dataset import PlotTileDataset
-from src.evaluation.metrics import classification_metrics, save_classification_report, save_confusion_matrix
+from model.src.evaluation.metrics import classification_metrics, save_classification_report, save_confusion_matrix
 from src.models.baselines import build_baseline_pipelines, build_pca_classifier
 from src.utils.config import load_config, save_json
 

@@ -1,0 +1,153 @@
+# ============================================================================
+# Experiment Configuration — Airborne Hyperspectral Forest Classification
+# ============================================================================
+# Edit paths below to point to your local data directory.
+# All other parameters have sensible defaults for the Hyytiälä site.
+
+# --- Paths ---
+data:
+  # Root directory containing downloaded Etsin data
+  root_dir: "D:/Hyperspectral_Data"  # Change to your data location
+
+  # Path to the metadata CSV/Excel linking stand IDs to labels
+  metadata_file: "metadata/stand_metadata.csv"
+
+  # Directory containing analysis-ready 100m x 100m CASI plot tiles
+  casi_tile_dir: "Hyytiala/CASI/plot_tiles"
+
+  # Directory containing analysis-ready 100m x 100m SASI plot tiles
+  sasi_tile_dir: "Hyytiala/SASI/plot_tiles"
+
+  # Directory containing ALS-derived 1m DEMs
+  als_dem_dir: "Hyytiala/ALS/DEM"
+
+  # How tile filenames map to stand IDs in metadata
+  # The loader strips this suffix from filenames to get stand IDs
+  tile_filename_pattern: "*.tif"  # or "*.hdr" for ENVI files
+  tile_id_from_filename: "stem"   # use filename stem as stand ID
+
+# --- Metadata column names ---
+# Adjust these to match the actual column headers in your metadata file
+metadata:
+  stand_id_col: "stand_id"
+  site_col: "site"
+  forest_type_col: "forest_type"          # coniferous / broadleaved / mixed
+  dominant_species_col: "dominant_species"  # e.g., "Norway spruce"
+  latitude_col: "latitude"
+  longitude_col: "longitude"
+
+# --- Spectral preprocessing ---
+preprocessing:
+  # Sensor to use: "casi", "sasi", or "merged"
+  sensor: "casi"
+
+  # Normalization method: "standard", "snv", "minmax", or "none"
+  normalization: "standard"
+
+  # Bands to exclude (water vapor absorption, interpolated by ATCOR-4)
+  # These wavelength ranges (nm) were interpolated, not measured
+  exclude_wavelength_ranges_nm:
+    - [895, 1003]
+    - [1092, 1168]
+    - [1302, 1528]
+    - [1737, 2038]
+
+  # Nodata value in the raster tiles (pixels to mask)
+  nodata_value: 0
+
+  # Minimum fraction of valid pixels required per stand tile
+  min_valid_pixel_fraction: 0.5
+
+# --- Feature extraction ---
+features:
+  # Level of feature extraction: "stand", "pixel", or "patch"
+  level: "stand"
+
+  # For stand-level: summary statistic over all valid pixels
+  stand_summary: "mean"   # "mean", "median", or "both"
+
+  # For patch-level: patch size in pixels
+  patch_size: 15
+  patch_stride: 15  # non-overlapping by default
+
+  # Optional PCA reduction (0 = no reduction)
+  pca_components: 0
+
+  # Whether to include spectral indices as additional features
+  include_indices: false  # NDVI, red-edge index, etc.
+
+# --- Models ---
+models:
+  # List of models to run in the baseline sweep
+  classifiers:
+    - name: "LogisticRegression"
+      params:
+        penalty: "l2"
+        C: 1.0
+        solver: "liblinear"
+        class_weight: "balanced"
+        max_iter: 1000
+
+    - name: "RandomForest"
+      params:
+        n_estimators: 500
+        class_weight: "balanced"
+        max_depth: null
+        min_samples_leaf: 2
+        n_jobs: -1
+
+    - name: "SVM"
+      params:
+        kernel: "rbf"
+        C: 10.0
+        gamma: "scale"
+        class_weight: "balanced"
+
+    - name: "GradientBoosting"
+      params:
+        n_estimators: 200
+        learning_rate: 0.1
+        max_depth: 5
+        subsample: 0.8
+
+    - name: "PLSDA"
+      params:
+        n_components: 10
+        max_iter: 500
+
+# --- Validation ---
+validation:
+  # Primary CV strategy: "loso" (leave-one-site-out) or "logo_stand" (leave-one-stand-out)
+  # For single-site (Hyytiälä only): use "logo_stand" or "stratified_kfold"
+  primary_cv: "logo_stand"
+
+  # Number of folds for stratified K-fold (used when only 1 site)
+  n_folds: 5
+
+  # Grouping variable for GroupKFold
+  group_col: "stand_id"  # for within-site; change to "site" for multi-site
+
+# --- Evaluation ---
+evaluation:
+  metrics:
+    - "overall_accuracy"
+    - "balanced_accuracy"
+    - "macro_f1"
+    - "cohens_kappa"
+    - "per_class_precision"
+    - "per_class_recall"
+    - "confusion_matrix"
+
+  # Save predictions for later analysis
+  save_predictions: true
+
+  # Generate figures
+  save_figures: true
+
+# --- Output ---
+output:
+  dir: "outputs"
+  experiment_name: "baseline_hyytialä_casi"
+
+# --- Reproducibility ---
+random_state: 42
