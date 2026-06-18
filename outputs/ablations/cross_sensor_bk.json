@@ -1,0 +1,85 @@
+{
+  "n_train_stands": 51,
+  "train_class_dist": {
+    "broadleaved": 15,
+    "coniferous": 26,
+    "mixed": 10
+  },
+  "n_bk_stands": 8,
+  "bk_predictions": [
+    {
+      "stand_id": "BK_Spruce1",
+      "prediction": "coniferous",
+      "probabilities": {
+        "broadleaved": 0.13667599434251457,
+        "coniferous": 0.7508386912482624,
+        "mixed": 0.11248531440922299
+      }
+    },
+    {
+      "stand_id": "BK_Spruce2",
+      "prediction": "coniferous",
+      "probabilities": {
+        "broadleaved": 0.280646465209517,
+        "coniferous": 0.6419845465187187,
+        "mixed": 0.07736898827176424
+      }
+    },
+    {
+      "stand_id": "BK_Spruce3",
+      "prediction": "mixed",
+      "probabilities": {
+        "broadleaved": 0.3229744582239546,
+        "coniferous": 0.21364956192975768,
+        "mixed": 0.4633759798462876
+      }
+    },
+    {
+      "stand_id": "BK_Spruce4",
+      "prediction": "coniferous",
+      "probabilities": {
+        "broadleaved": 0.19604427108067535,
+        "coniferous": 0.712334441332127,
+        "mixed": 0.09162128758719743
+      }
+    },
+    {
+      "stand_id": "BK_Spruce5",
+      "prediction": "coniferous",
+      "probabilities": {
+        "broadleaved": 0.2441538583334477,
+        "coniferous": 0.5298807434827235,
+        "mixed": 0.22596539818382877
+      }
+    },
+    {
+      "stand_id": "BK_Spruce6",
+      "prediction": "coniferous",
+      "probabilities": {
+        "broadleaved": 0.09813777058849753,
+        "coniferous": 0.7932667735365336,
+        "mixed": 0.10859545587496854
+      }
+    },
+    {
+      "stand_id": "BK_Spruce7",
+      "prediction": "coniferous",
+      "probabilities": {
+        "broadleaved": 0.07404591559722876,
+        "coniferous": 0.6201828040785494,
+        "mixed": 0.3057712803242217
+      }
+    },
+    {
+      "stand_id": "BK_Spruce8",
+      "prediction": "coniferous",
+      "probabilities": {
+        "broadleaved": 0.07582217859193734,
+        "coniferous": 0.660481575807331,
+        "mixed": 0.2636962456007315
+      }
+    }
+  ],
+  "n_correct_coniferous": 7,
+  "ba_bk": 0.875
+}

@@ -1,0 +1,146 @@
+{
+  "stand_level_all": {
+    "mean_ba": 0.412962962962963,
+    "std_ba": 0.2924401853417951,
+    "mean_f1": 0.33796296296296297,
+    "fold_ba": [
+      0.0,
+      0.6388888888888888,
+      0.6
+    ],
+    "folds": [
+      {
+        "test_site": "BilyKriz",
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "n_test": 8,
+        "class_dist": {
+          "broadleaved": 0,
+          "coniferous": 8
+        }
+      },
+      {
+        "test_site": "Jarvselja",
+        "balanced_accuracy": 0.6388888888888888,
+        "macro_f1": 0.6388888888888888,
+        "n_test": 13,
+        "class_dist": {
+          "broadleaved": 9,
+          "coniferous": 4
+        }
+      },
+      {
+        "test_site": "Lanzhot",
+        "balanced_accuracy": 0.6,
+        "macro_f1": 0.375,
+        "n_test": 10,
+        "class_dist": {
+          "broadleaved": 10,
+          "coniferous": 0
+        }
+      }
+    ],
+    "n_samples": 31,
+    "n_classes": 2,
+    "class_names": [
+      "broadleaved",
+      "coniferous"
+    ]
+  },
+  "stand_level_binary": {
+    "mean_ba": 0.412962962962963,
+    "std_ba": 0.2924401853417951,
+    "mean_f1": 0.33796296296296297,
+    "fold_ba": [
+      0.0,
+      0.6388888888888888,
+      0.6
+    ],
+    "folds": [
+      {
+        "test_site": "BilyKriz",
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "n_test": 8,
+        "class_dist": {
+          "broadleaved": 0,
+          "coniferous": 8
+        }
+      },
+      {
+        "test_site": "Jarvselja",
+        "balanced_accuracy": 0.6388888888888888,
+        "macro_f1": 0.6388888888888888,
+        "n_test": 13,
+        "class_dist": {
+          "broadleaved": 9,
+          "coniferous": 4
+        }
+      },
+      {
+        "test_site": "Lanzhot",
+        "balanced_accuracy": 0.6,
+        "macro_f1": 0.375,
+        "n_test": 10,
+        "class_dist": {
+          "broadleaved": 10,
+          "coniferous": 0
+        }
+      }
+    ],
+    "n_samples": 31,
+    "n_classes": 2,
+    "class_names": [
+      "broadleaved",
+      "coniferous"
+    ]
+  },
+  "meas_level_all": {
+    "mean_ba": 0.40808641975308646,
+    "std_ba": 0.231947202286817,
+    "mean_f1": 0.29930055547610995,
+    "fold_ba": [
+      0.10833333333333334,
+      0.4425925925925926,
+      0.6733333333333333
+    ],
+    "folds": [
+      {
+        "test_site": "BilyKriz",
+        "balanced_accuracy": 0.10833333333333334,
+        "macro_f1": 0.09774436090225563,
+        "n_test": 120,
+        "class_dist": {
+          "broadleaved": 0,
+          "coniferous": 120
+        }
+      },
+      {
+        "test_site": "Jarvselja",
+        "balanced_accuracy": 0.4425925925925926,
+        "macro_f1": 0.3977668672790624,
+        "n_test": 195,
+        "class_dist": {
+          "broadleaved": 135,
+          "coniferous": 60
+        }
+      },
+      {
+        "test_site": "Lanzhot",
+        "balanced_accuracy": 0.6733333333333333,
+        "macro_f1": 0.40239043824701193,
+        "n_test": 150,
+        "class_dist": {
+          "broadleaved": 150,
+          "coniferous": 0
+        }
+      }
+    ],
+    "n_samples": 465,
+    "n_classes": 2,
+    "class_names": [
+      "broadleaved",
+      "coniferous"
+    ]
+  }
+}

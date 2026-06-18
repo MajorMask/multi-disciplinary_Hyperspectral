@@ -49,7 +49,7 @@ def compute_metrics(
         "per_class_precision": precision_score(y_true, y_pred, average=None, zero_division=0).tolist(),
         "per_class_recall": recall_score(y_true, y_pred, average=None, zero_division=0).tolist(),
         "per_class_f1": f1_score(y_true, y_pred, average=None, zero_division=0).tolist(),
-        "confusion_matrix": confusion_matrix(y_true, y_pred).tolist(),
+        "confusion_matrix": confusion_matrix(y_true, y_pred, labels=class_names).tolist() if class_names else confusion_matrix(y_true, y_pred).tolist(),
         "n_samples": len(y_true),
         "n_correct": int((y_true == y_pred).sum()),
     }
@@ -57,7 +57,7 @@ def compute_metrics(
     if class_names:
         results["class_names"] = class_names
         results["classification_report"] = classification_report(
-            y_true, y_pred, target_names=class_names, zero_division=0
+            y_true, y_pred, labels=class_names, target_names=class_names, zero_division=0
         )
 
     return results

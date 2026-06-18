@@ -107,6 +107,23 @@ def run_experiment(cfg: Dict) -> Dict[str, Any]:
     if not tiles:
         raise RuntimeError(f"No tiles loaded from {tile_dir}")
 
+    # Inject known wavelengths if tiles lack them (band indices 0..N-1)
+    known_wl_key = f"{sensor}_wavelengths_nm"
+    known_wavelengths = cfg["preprocessing"].get(known_wl_key)
+    if known_wavelengths and np.array_equal(tiles[0].wavelengths, np.arange(tiles[0].n_bands)):
+        wl_array = np.array(known_wavelengths, dtype=np.float64)
+        for tile in tiles:
+            if len(wl_array) == tile.n_bands:
+                tile.wavelengths = wl_array
+        logger.info(f"Injected {len(wl_array)} known {sensor.upper()} wavelengths")
+
+    # Apply reflectance scale factor (raw values are integer reflectance * scale)
+    scale = cfg["preprocessing"].get("reflectance_scale_factor", 1.0)
+    if scale != 1.0:
+        for tile in tiles:
+            tile.image = tile.image / scale
+        logger.info(f"Applied reflectance scale factor 1/{scale}")
+
     # ---- 3. Load metadata ----
     t1 = time.time()
     meta_cfg = cfg.get("metadata", {})
@@ -115,6 +132,12 @@ def run_experiment(cfg: Dict) -> Dict[str, Any]:
         stand_id_col=meta_cfg.get("stand_id_col", "stand_id"),
         forest_type_col=meta_cfg.get("forest_type_col", "forest_type"),
     )
+
+    # Strip sensor suffix from tile stems (e.g. "HY_BIRCH1_CASI" → "HY_BIRCH1")
+    sensor_upper = sensor.upper()
+    for tile in tiles:
+        if tile.stand_id.endswith(f"_{sensor_upper}"):
+            tile.stand_id = tile.stand_id[: -(len(sensor_upper) + 1)]
 
     tile_ids = [t.stand_id for t in tiles]
     matched = merge_tiles_with_metadata(tile_ids, metadata)

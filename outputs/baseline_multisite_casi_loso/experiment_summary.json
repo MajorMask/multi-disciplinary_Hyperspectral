@@ -1,0 +1,197 @@
+{
+  "n_tiles": 58,
+  "n_matched": 58,
+  "n_bands_original": 48,
+  "n_bands_filtered": 40,
+  "class_distribution": {
+    "coniferous": 33,
+    "broadleaved": 15,
+    "mixed": 10
+  },
+  "cv_strategy": "loso_site",
+  "n_folds": 4,
+  "timings": {
+    "load_tiles": 1.2760250568389893,
+    "load_metadata": 0.0,
+    "band_selection": 0.0,
+    "feature_extraction": 0.6550755500793457,
+    "classification": 6.611805200576782,
+    "total": 8.593016862869263
+  },
+  "models": {
+    "LogisticRegression": {
+      "mean_overall_accuracy": 0.6983516483516483,
+      "std_overall_accuracy": 0.25061992935851624,
+      "mean_balanced_accuracy": 0.5416666666666666,
+      "std_balanced_accuracy": 0.27322660517925007,
+      "mean_cohens_kappa": NaN,
+      "std_cohens_kappa": NaN,
+      "mean_macro_f1": 0.4695414704343276,
+      "std_macro_f1": 0.30629113273788694,
+      "mean_macro_precision": 0.49382716049382713,
+      "std_macro_precision": 0.3012699837509242,
+      "mean_macro_recall": 0.49999999999999994,
+      "std_macro_recall": 0.2886751345948129,
+      "total_confusion_matrix": [
+        [
+          10,
+          3,
+          2
+        ],
+        [
+          1,
+          30,
+          2
+        ],
+        [
+          7,
+          3,
+          0
+        ]
+      ],
+      "n_folds": 4,
+      "total_samples": 58,
+      "warnings": [
+        "NEGATIVE KAPPA: 1 fold(s) have \u03ba < 0 (worse than random). Model may not be learning meaningful patterns."
+      ]
+    },
+    "RandomForest": {
+      "mean_overall_accuracy": 0.756043956043956,
+      "std_overall_accuracy": 0.16649167644021706,
+      "mean_balanced_accuracy": 0.6212121212121212,
+      "std_balanced_accuracy": 0.2279661139898648,
+      "mean_cohens_kappa": NaN,
+      "std_cohens_kappa": NaN,
+      "mean_macro_f1": 0.5758535298177242,
+      "std_macro_f1": 0.246213586093716,
+      "mean_macro_precision": 0.56875,
+      "std_macro_precision": 0.25320000603387743,
+      "mean_macro_recall": 0.6212121212121212,
+      "std_macro_recall": 0.2279661139898648,
+      "total_confusion_matrix": [
+        [
+          12,
+          1,
+          2
+        ],
+        [
+          2,
+          31,
+          0
+        ],
+        [
+          8,
+          2,
+          0
+        ]
+      ],
+      "n_folds": 4,
+      "total_samples": 58,
+      "warnings": []
+    },
+    "SVM": {
+      "mean_overall_accuracy": 0.6939560439560439,
+      "std_overall_accuracy": 0.1703713171346922,
+      "mean_balanced_accuracy": 0.5922619047619048,
+      "std_balanced_accuracy": 0.16244111963089508,
+      "mean_cohens_kappa": 0.18437766870935351,
+      "std_cohens_kappa": 0.2016262741976336,
+      "mean_macro_f1": 0.43824006962304835,
+      "std_macro_f1": 0.12333375244534438,
+      "mean_macro_precision": 0.48305555555555557,
+      "std_macro_precision": 0.19983847644201722,
+      "mean_macro_recall": 0.44940476190476186,
+      "std_macro_recall": 0.10923065061608674,
+      "total_confusion_matrix": [
+        [
+          11,
+          2,
+          2
+        ],
+        [
+          0,
+          30,
+          3
+        ],
+        [
+          6,
+          3,
+          1
+        ]
+      ],
+      "n_folds": 4,
+      "total_samples": 58,
+      "warnings": []
+    },
+    "GradientBoosting": {
+      "mean_overall_accuracy": 0.706043956043956,
+      "std_overall_accuracy": 0.20204918690326257,
+      "mean_balanced_accuracy": 0.5922619047619047,
+      "std_balanced_accuracy": 0.25146608103141277,
+      "mean_cohens_kappa": NaN,
+      "std_cohens_kappa": NaN,
+      "mean_macro_f1": 0.555018315018315,
+      "std_macro_f1": 0.2662777222310808,
+      "mean_macro_precision": 0.5467261904761904,
+      "std_macro_precision": 0.2742276504658955,
+      "mean_macro_recall": 0.5922619047619047,
+      "std_macro_recall": 0.25146608103141277,
+      "total_confusion_matrix": [
+        [
+          8,
+          4,
+          3
+        ],
+        [
+          1,
+          32,
+          0
+        ],
+        [
+          7,
+          2,
+          1
+        ]
+      ],
+      "n_folds": 4,
+      "total_samples": 58,
+      "warnings": [
+        "NEGATIVE KAPPA: 1 fold(s) have \u03ba < 0 (worse than random). Model may not be learning meaningful patterns."
+      ]
+    },
+    "PLSDA": {
+      "mean_overall_accuracy": 0.6653846153846155,
+      "std_overall_accuracy": 0.2133488961285948,
+      "mean_balanced_accuracy": 0.5909090909090908,
+      "std_balanced_accuracy": 0.24266086936434797,
+      "mean_cohens_kappa": NaN,
+      "std_cohens_kappa": NaN,
+      "mean_macro_f1": 0.5366382664176782,
+      "std_macro_f1": 0.2747863383207796,
+      "mean_macro_precision": 0.5354166666666667,
+      "std_macro_precision": 0.2724869390345975,
+      "mean_macro_recall": 0.5909090909090908,
+      "std_macro_recall": 0.24266086936434797,
+      "total_confusion_matrix": [
+        [
+          10,
+          0,
+          5
+        ],
+        [
+          0,
+          23,
+          10
+        ],
+        [
+          8,
+          1,
+          1
+        ]
+      ],
+      "n_folds": 4,
+      "total_samples": 58,
+      "warnings": []
+    }
+  }
+}

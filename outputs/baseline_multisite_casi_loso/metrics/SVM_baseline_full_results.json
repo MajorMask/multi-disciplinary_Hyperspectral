@@ -1,0 +1,199 @@
+[
+  {
+    "overall_accuracy": 0.8571428571428571,
+    "balanced_accuracy": 0.8571428571428571,
+    "cohens_kappa": 0.0,
+    "macro_f1": 0.46153846153846156,
+    "macro_precision": 0.5,
+    "macro_recall": 0.42857142857142855,
+    "per_class_precision": [
+      1.0,
+      0.0
+    ],
+    "per_class_recall": [
+      0.8571428571428571,
+      0.0
+    ],
+    "per_class_f1": [
+      0.9230769230769231,
+      0.0
+    ],
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "n_samples": 7,
+    "n_correct": 6,
+    "class_names": [
+      "broadleaved",
+      "coniferous",
+      "mixed"
+    ],
+    "classification_report": "              precision    recall  f1-score   support\n\n broadleaved       0.00      0.00      0.00         0\n  coniferous       1.00      0.86      0.92         7\n       mixed       0.00      0.00      0.00         0\n\n    accuracy                           0.86         7\n   macro avg       0.33      0.29      0.31         7\nweighted avg       1.00      0.86      0.92         7\n",
+    "fold": 0,
+    "test_stand": "multi"
+  },
+  {
+    "overall_accuracy": 0.8571428571428571,
+    "balanced_accuracy": 0.5833333333333334,
+    "cohens_kappa": 0.5044247787610621,
+    "macro_f1": 0.6120567375886524,
+    "macro_precision": 0.7933333333333333,
+    "macro_recall": 0.5833333333333334,
+    "per_class_precision": [
+      1.0,
+      0.88,
+      0.5
+    ],
+    "per_class_recall": [
+      0.25,
+      1.0,
+      0.5
+    ],
+    "per_class_f1": [
+      0.4,
+      0.9361702127659575,
+      0.5
+    ],
+    "confusion_matrix": [
+      [
+        1,
+        2,
+        1
+      ],
+      [
+        0,
+        22,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "n_samples": 28,
+    "n_correct": 24,
+    "class_names": [
+      "broadleaved",
+      "coniferous",
+      "mixed"
+    ],
+    "classification_report": "              precision    recall  f1-score   support\n\n broadleaved       1.00      0.25      0.40         4\n  coniferous       0.88      1.00      0.94        22\n       mixed       0.50      0.50      0.50         2\n\n    accuracy                           0.86        28\n   macro avg       0.79      0.58      0.61        28\nweighted avg       0.87      0.86      0.83        28\n",
+    "fold": 1,
+    "test_stand": "multi"
+  },
+  {
+    "overall_accuracy": 0.46153846153846156,
+    "balanced_accuracy": 0.5,
+    "cohens_kappa": 0.20869565217391306,
+    "macro_f1": 0.41269841269841273,
+    "macro_precision": 0.38888888888888884,
+    "macro_recall": 0.5,
+    "per_class_precision": [
+      0.5,
+      0.6666666666666666,
+      0.0
+    ],
+    "per_class_recall": [
+      1.0,
+      0.5,
+      0.0
+    ],
+    "per_class_f1": [
+      0.6666666666666666,
+      0.5714285714285714,
+      0.0
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2
+      ],
+      [
+        4,
+        1,
+        0
+      ]
+    ],
+    "n_samples": 13,
+    "n_correct": 6,
+    "class_names": [
+      "broadleaved",
+      "coniferous",
+      "mixed"
+    ],
+    "classification_report": "              precision    recall  f1-score   support\n\n broadleaved       0.50      1.00      0.67         4\n  coniferous       0.67      0.50      0.57         4\n       mixed       0.00      0.00      0.00         5\n\n    accuracy                           0.46        13\n   macro avg       0.39      0.50      0.41        13\nweighted avg       0.36      0.46      0.38        13\n",
+    "fold": 2,
+    "test_stand": "multi"
+  },
+  {
+    "overall_accuracy": 0.6,
+    "balanced_accuracy": 0.42857142857142855,
+    "cohens_kappa": 0.024390243902438935,
+    "macro_f1": 0.26666666666666666,
+    "macro_precision": 0.25,
+    "macro_recall": 0.2857142857142857,
+    "per_class_precision": [
+      0.75,
+      0.0,
+      0.0
+    ],
+    "per_class_recall": [
+      0.8571428571428571,
+      0.0,
+      0.0
+    ],
+    "per_class_f1": [
+      0.8,
+      0.0,
+      0.0
+    ],
+    "confusion_matrix": [
+      [
+        6,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        0
+      ]
+    ],
+    "n_samples": 10,
+    "n_correct": 6,
+    "class_names": [
+      "broadleaved",
+      "coniferous",
+      "mixed"
+    ],
+    "classification_report": "              precision    recall  f1-score   support\n\n broadleaved       0.75      0.86      0.80         7\n  coniferous       0.00      0.00      0.00         0\n       mixed       0.00      0.00      0.00         3\n\n    accuracy                           0.60        10\n   macro avg       0.25      0.29      0.27        10\nweighted avg       0.53      0.60      0.56        10\n",
+    "fold": 3,
+    "test_stand": "multi"
+  }
+]

@@ -7,23 +7,23 @@
 # --- Paths ---
 data:
   # Root directory containing downloaded Etsin data
-  root_dir: "D:/Hyperspectral_Data"  # Change to your data location
+  root_dir: "C:/Users/aggarwm1/Videos/multi-disciplinary_Hyperspectral/model/data"
 
   # Path to the metadata CSV/Excel linking stand IDs to labels
-  metadata_file: "metadata/stand_metadata.csv"
+  metadata_file: "stand_metadata.csv"
 
   # Directory containing analysis-ready 100m x 100m CASI plot tiles
-  casi_tile_dir: "Hyytiala/CASI/plot_tiles"
+  casi_tile_dir: "Hyperspectral/Airborne_data/Airborne_hyperspectral/Airborne_data/Airborne_hyperspectral/Analysis_ready_subsets/CASI"
 
   # Directory containing analysis-ready 100m x 100m SASI plot tiles
-  sasi_tile_dir: "Hyytiala/SASI/plot_tiles"
+  sasi_tile_dir: "Hyperspectral/Airborne_data/Airborne_hyperspectral/Airborne_data/Airborne_hyperspectral/Analysis_ready_subsets/CS"
 
   # Directory containing ALS-derived 1m DEMs
-  als_dem_dir: "Hyytiala/ALS/DEM"
+  als_dem_dir: "Hyperspectral/Airborne_data/Airborne_hyperspectral/Airborne_data/Airborne_hyperspectral/Analysis_ready_subsets/ALS"
 
   # How tile filenames map to stand IDs in metadata
   # The loader strips this suffix from filenames to get stand IDs
-  tile_filename_pattern: "*.tif"  # or "*.hdr" for ENVI files
+  tile_filename_pattern: "*_CASI.tif"  # CASI tiles follow pattern STANDID_CASI.tif
   tile_id_from_filename: "stem"   # use filename stem as stand ID
 
 # --- Metadata column names ---
@@ -53,7 +53,15 @@ preprocessing:
     - [1737, 2038]
 
   # Nodata value in the raster tiles (pixels to mask)
-  nodata_value: 0
+  nodata_value: 10000  # GeoTIFF tiles use 10000 as nodata (reflectance scale factor)
+  reflectance_scale_factor: 10000  # divide raw int values by this to get [0,1] reflectance
+
+  # Known CASI-1500 center wavelengths (nm) for 48-band sensor (from ENVI headers)
+  casi_wavelengths_nm: [381.97, 396.21, 410.45, 424.70, 438.94, 453.19, 467.43, 481.68,
+    495.92, 510.17, 524.42, 538.66, 552.91, 567.16, 581.41, 595.66, 609.91, 624.17,
+    638.42, 652.67, 666.93, 681.18, 695.44, 709.69, 723.95, 738.21, 752.47, 766.73,
+    780.99, 795.25, 809.51, 823.78, 838.04, 852.31, 866.58, 880.85, 895.12, 909.39,
+    923.65, 937.93, 952.20, 966.48, 980.75, 995.03, 1009.31, 1023.59, 1037.87, 1052.15]
 
   # Minimum fraction of valid pixels required per stand tile
   min_valid_pixel_fraction: 0.5
@@ -71,7 +79,7 @@ features:
   patch_stride: 15  # non-overlapping by default
 
   # Optional PCA reduction (0 = no reduction)
-  pca_components: 0
+  pca_components: 10
 
   # Whether to include spectral indices as additional features
   include_indices: false  # NDVI, red-edge index, etc.
@@ -82,9 +90,8 @@ models:
   classifiers:
     - name: "LogisticRegression"
       params:
-        penalty: "l2"
         C: 1.0
-        solver: "liblinear"
+        solver: "lbfgs"
         class_weight: "balanced"
         max_iter: 1000
 
@@ -117,15 +124,14 @@ models:
 
 # --- Validation ---
 validation:
-  # Primary CV strategy: "loso" (leave-one-site-out) or "logo_stand" (leave-one-stand-out)
-  # For single-site (Hyytiälä only): use "logo_stand" or "stratified_kfold"
-  primary_cv: "logo_stand"
+  # Primary CV strategy: "loso_site" (leave-one-site-out) for multi-site
+  primary_cv: "loso_site"
 
   # Number of folds for stratified K-fold (used when only 1 site)
-  n_folds: 5
+  n_folds: 4
 
   # Grouping variable for GroupKFold
-  group_col: "stand_id"  # for within-site; change to "site" for multi-site
+  group_col: "site"  # for multi-site leave-one-site-out
 
 # --- Evaluation ---
 evaluation:
@@ -147,7 +153,7 @@ evaluation:
 # --- Output ---
 output:
   dir: "outputs"
-  experiment_name: "baseline_hyytialä_casi"
+  experiment_name: "pca10_multisite_casi_loso"
 
 # --- Reproducibility ---
 random_state: 42
