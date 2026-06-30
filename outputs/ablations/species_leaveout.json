@@ -1,0 +1,357 @@
+{
+  "E4_full_binary_loso": {
+    "description": "All coniferous vs broadleaved, LOSO by site",
+    "mean_ba": 0.9318181818181819,
+    "folds": [
+      {
+        "balanced_accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class_recall": {
+          "coniferous": 1.0
+        },
+        "n_test": 7,
+        "site": "BilyKriz"
+      },
+      {
+        "balanced_accuracy": 0.8522727272727273,
+        "macro_f1": 0.8522727272727273,
+        "per_class_recall": {
+          "coniferous": 0.9545454545454546,
+          "broadleaved": 0.75
+        },
+        "n_test": 26,
+        "site": "Hyytiala"
+      },
+      {
+        "balanced_accuracy": 0.875,
+        "macro_f1": 0.873015873015873,
+        "per_class_recall": {
+          "coniferous": 0.75,
+          "broadleaved": 1.0
+        },
+        "n_test": 8,
+        "site": "Jarvselja"
+      },
+      {
+        "balanced_accuracy": 1.0,
+        "macro_f1": 1.0,
+        "per_class_recall": {
+          "broadleaved": 1.0
+        },
+        "n_test": 7,
+        "site": "Lanzhot"
+      }
+    ]
+  },
+  "E1_species_separability": {
+    "description": "Norway spruce vs Scots pine, LOSO by site (coniferous stands only)",
+    "mean_ba": 0.5,
+    "folds": [
+      {
+        "site": "BilyKriz",
+        "skipped": true,
+        "reason": "single species: Norway spruce"
+      },
+      {
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.2903225806451613,
+        "per_class_recall": {
+          "Norway spruce": 1.0,
+          "Scots pine": 0.0
+        },
+        "n_test": 22,
+        "site": "Hyytiala"
+      },
+      {
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.3333333333333333,
+        "per_class_recall": {
+          "Norway spruce": 0.0,
+          "Scots pine": 1.0
+        },
+        "n_test": 4,
+        "site": "Jarvselja"
+      }
+    ]
+  },
+  "E2_leave_spruce_out": {
+    "description": "Train on [Scots pine + broadleaved], test on [Norway spruce + broadleaved]",
+    "n_train": 30,
+    "n_test": 33,
+    "metrics": {
+      "balanced_accuracy": 0.9722222222222222,
+      "macro_f1": 0.9695852534562213,
+      "per_class_recall": {
+        "coniferous": 0.9444444444444444,
+        "broadleaved": 1.0
+      },
+      "n_test": 33
+    },
+    "spruce_site_recall": {
+      "Hyytiala": 1.0,
+      "Jarvselja": 0.5,
+      "BilyKriz": 1.0
+    },
+    "spruce_stand_predictions": {
+      "BK_SPRUCE1": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE2": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE3": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE4": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE5": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE6": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE7": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE1": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE2": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE3": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE4": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE5": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE6": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE7": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE8": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_SPRUCE9": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "JS_SPRUCE1": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "JS_SPRUCE2": {
+        "true": "coniferous",
+        "predicted": "broadleaved",
+        "correct": false
+      }
+    }
+  },
+  "E3_leave_pine_out": {
+    "description": "Train on [Norway spruce + broadleaved], test on [Scots pine + broadleaved]",
+    "n_train": 33,
+    "n_test": 30,
+    "metrics": {
+      "balanced_accuracy": 0.9,
+      "macro_f1": 0.898989898989899,
+      "per_class_recall": {
+        "coniferous": 0.8,
+        "broadleaved": 1.0
+      },
+      "n_test": 30
+    },
+    "pine_site_recall": {
+      "Hyytiala": 0.8461538461538461,
+      "Jarvselja": 0.5
+    },
+    "pine_stand_predictions": {
+      "HY_PINE10": {
+        "true": "coniferous",
+        "predicted": "broadleaved",
+        "correct": false
+      },
+      "HY_PINE11": {
+        "true": "coniferous",
+        "predicted": "broadleaved",
+        "correct": false
+      },
+      "HY_PINE12": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE13": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE1": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE2": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE3": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE4": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE5": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE6": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE7": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE8": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "HY_PINE9": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "JS_PINE1": {
+        "true": "coniferous",
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "JS_PINE2": {
+        "true": "coniferous",
+        "predicted": "broadleaved",
+        "correct": false
+      }
+    }
+  },
+  "E6_leave_HY_spruce_out": {
+    "description": "Remove Hyytiala Norway spruce from training; test on [HY spruce + broadleaved]",
+    "n_train": 39,
+    "metrics": {
+      "balanced_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_class_recall": {
+        "coniferous": 1.0,
+        "broadleaved": 1.0
+      },
+      "n_test": 24
+    },
+    "hy_spruce_recall": 1.0
+  },
+  "E7_leave_BK_spruce_out": {
+    "description": "Remove BilyKriz Norway spruce from training; test on [BK spruce + broadleaved]",
+    "n_train": 41,
+    "metrics": {
+      "balanced_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "per_class_recall": {
+        "coniferous": 1.0,
+        "broadleaved": 1.0
+      },
+      "n_test": 22
+    },
+    "bk_spruce_recall": 1.0,
+    "bk_stand_predictions": {
+      "BK_SPRUCE1": {
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE2": {
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE3": {
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE4": {
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE5": {
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE6": {
+        "predicted": "coniferous",
+        "correct": true
+      },
+      "BK_SPRUCE7": {
+        "predicted": "coniferous",
+        "correct": true
+      }
+    }
+  },
+  "E5_species_spectra": {
+    "description": "Spectral distances between spruce, pine, broadleaved in normalised feature space",
+    "euclidean_distances": {
+      "spruce_vs_pine": 6.834132671356201,
+      "spruce_vs_broadleaved": 8.620451927185059,
+      "pine_vs_broadleaved": 6.66925048828125
+    },
+    "top5_spruce_pine_separable_nm": [
+      723,
+      766,
+      738,
+      524,
+      823
+    ],
+    "spruce_pine_separability_index_mean": 0.9484710693359375
+  }
+}
